@@ -1,3 +1,10 @@
+// import readline
+const readline = require("node:readline");
+const { stdin: input, stdout: output } = require("node:process");
+
+const rl = readline.createInterface({ input, output });
+
+
 // global secretNumber
 const secretNumber = 53;
 
@@ -15,6 +22,25 @@ function checkGuess(num) {
   }
 }
 
+// askGuess function; use readline's question method to ask user to "Enter a guess:"
+function askGuess() {
+  rl.question("Enter a guess: ", answer => {
+    const guess = checkGuess(Number(answer));
+
+    // if guess is true
+    if (guess) {
+      console.log("You win!"); // print "You win!"
+      rl.close(); // close interface
+    // if guess is false
+    } else {
+      // call askGuess again
+      askGuess();
+    }
+  });
+
+}
+
+askGuess();
 
 /****************************** TESTS ******************************/
 // console.log(checkGuess(6)); // "Too low."
