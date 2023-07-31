@@ -37,13 +37,22 @@ function askGuess() {
       askGuess();
     }
   });
-
 }
 
-askGuess();
+// function "randomInRange"; input: min and max numbers; output: return random whole number between provided min and max (inclusive)
+function randomInRange(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
 
 /****************************** TESTS ******************************/
 // console.log(checkGuess(6)); // "Too low."
 // console.log(checkGuess(72)); // "Too high."
 // console.log(checkGuess(53)); // "Correct!"
+
+// askGuess();
+
+console.log(randomInRange(15, 20));
+console.log(randomInRange(15, 20));
+console.log(randomInRange(15, 20));
+rl.close();
 /*******************************************************************/
