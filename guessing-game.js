@@ -6,8 +6,8 @@ const rl = readline.createInterface({ input, output });
 
 
 let secretNumber; // global secretNumber
-let numAttempts = 5; // set number of attempts
-askRange(); // start game
+let numAttempts; // number of attempts
+askLimit(); // start game
 
 // function "checkGuess"; input: num; compares num vs global secretNumber
 function checkGuess(num) {
@@ -27,7 +27,7 @@ function checkGuess(num) {
 function askGuess() {
   // if numAttempts is 0
   if (numAttempts === 0) {
-    console.log("You Lose.") // print "You Lose."
+    console.log("You lose...") // print "You lose."
     rl.close(); // close interface
     return;
   }
@@ -65,6 +65,14 @@ function getMin(max) {
     askGuess();
   });
 }
+
+function askLimit() {
+  rl.question("Enter the number of guesses: ", num => {
+    numAttempts = num;
+    askRange();
+  });
+}
+
 
 /****************************** TESTS ******************************/
 // console.log(checkGuess(6)); // "Too low."
