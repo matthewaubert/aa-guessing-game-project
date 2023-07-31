@@ -44,6 +44,18 @@ function randomInRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+// function "askRange"; asks user to enter min and max numbers
+function askRange() {
+  rl.question("Enter a max number: ", getMin);
+}
+
+function getMin(max) {
+  rl.question("Enter a min number: ", min => {
+    console.log(`I'm thinking of a number between ${min} and ${max}...`);
+    rl.close(); // close interface
+  });
+}
+
 /****************************** TESTS ******************************/
 // console.log(checkGuess(6)); // "Too low."
 // console.log(checkGuess(72)); // "Too high."
@@ -51,8 +63,10 @@ function randomInRange(min, max) {
 
 // askGuess();
 
-console.log(randomInRange(15, 20));
-console.log(randomInRange(15, 20));
-console.log(randomInRange(15, 20));
-rl.close();
+// console.log(randomInRange(15, 20));
+// console.log(randomInRange(15, 20));
+// console.log(randomInRange(15, 20));
+// rl.close();
+
+askRange();
 /*******************************************************************/
