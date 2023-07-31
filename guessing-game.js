@@ -6,7 +6,8 @@ const rl = readline.createInterface({ input, output });
 
 
 // global secretNumber
-const secretNumber = 53;
+let secretNumber;
+askRange();
 
 // function "checkGuess"; input: num; compares num vs global secretNumber
 function checkGuess(num) {
@@ -52,8 +53,8 @@ function askRange() {
 function getMin(max) {
   rl.question("Enter a min number: ", min => {
     console.log(`I'm thinking of a number between ${min} and ${max}...`);
-    console.log(randomInRange(Number(min), Number(max))); // call randomInRange function with min and max as args
-    rl.close(); // close interface
+    secretNumber = randomInRange(Number(min), Number(max)); // call randomInRange function with min and max as args
+    askGuess();
   });
 }
 
@@ -69,5 +70,5 @@ function getMin(max) {
 // console.log(randomInRange(15, 20));
 // rl.close();
 
-askRange();
+// askRange();
 /*******************************************************************/
