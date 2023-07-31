@@ -5,9 +5,9 @@ const { stdin: input, stdout: output } = require("node:process");
 const rl = readline.createInterface({ input, output });
 
 
-// global secretNumber
-let secretNumber;
-askRange();
+let secretNumber; // global secretNumber
+let numAttempts = 5; // set number of attempts
+askRange(); // start game
 
 // function "checkGuess"; input: num; compares num vs global secretNumber
 function checkGuess(num) {
@@ -25,6 +25,14 @@ function checkGuess(num) {
 
 // askGuess function; use readline's question method to ask user to "Enter a guess:"
 function askGuess() {
+  // if numAttempts is 0
+  if (numAttempts === 0) {
+    console.log("You Lose.") // print "You Lose."
+    rl.close(); // close interface
+    return;
+  }
+  numAttempts--; // decrement numAttempts
+
   rl.question("Enter a guess: ", answer => {
     const guess = checkGuess(Number(answer));
 
@@ -36,7 +44,7 @@ function askGuess() {
     } else {
       // call askGuess again
       askGuess();
-    }
+    }    
   });
 }
 
