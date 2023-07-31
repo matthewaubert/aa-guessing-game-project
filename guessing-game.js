@@ -52,6 +52,7 @@ function askRange() {
 function getMin(max) {
   rl.question("Enter a min number: ", min => {
     console.log(`I'm thinking of a number between ${min} and ${max}...`);
+    console.log(randomInRange(Number(min), Number(max))); // call randomInRange function with min and max as args
     rl.close(); // close interface
   });
 }
